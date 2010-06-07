@@ -1,0 +1,8 @@
+*~
+target
+web-app/WEB-INF
+plugins/core
+.idea
+.iml
+.iws
+.ipr
