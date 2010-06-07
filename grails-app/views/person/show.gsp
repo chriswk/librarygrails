@@ -59,7 +59,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="person.birthDate.label" default="Birth Date" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${personInstance?.birthDate}" /></td>
+                            <td valign="top" class="value"><g:formatDate format="yyyy-MM-dd" date="${personInstance?.birthDate}" /></td>
                             
                         </tr>
                     

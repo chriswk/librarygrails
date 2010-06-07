@@ -41,6 +41,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="itemType"><g:message code="item.itemType.label" default="Item Type" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'itemType', 'errors')}">
+                                    <g:select name="itemType.id" from="${com.isharelib.library.domain.ItemType.list()}" optionKey="id" value="${itemInstance?.itemType?.id}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="people"><g:message code="item.people.label" default="People" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'people', 'errors')}">
@@ -53,7 +62,7 @@
                                   <label for="releaseYear"><g:message code="item.releaseYear.label" default="Release Year" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'releaseYear', 'errors')}">
-                                    <g:datePicker name="releaseYear" precision="day" value="${itemInstance?.releaseYear}"  />
+                                    <g:datePicker name="releaseYear" precision="year" value="${itemInstance?.releaseYear}"  />
                                 </td>
                             </tr>
                         

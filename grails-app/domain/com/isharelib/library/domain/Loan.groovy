@@ -6,4 +6,8 @@ class Loan {
     static belongsTo = [ loaner : Collector, loanItem : ItemInstance ]
     static constraints = {
     }
+
+    String toString() {
+      "${loanItem.item.title}"
+    }
 }

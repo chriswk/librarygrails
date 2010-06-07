@@ -1,10 +1,10 @@
 
-<%@ page import="com.isharelib.library.domain.Item" %>
+<%@ page import="com.isharelib.library.domain.AuthRole" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
+        <g:set var="entityName" value="${message(code: 'authRole.label', default: 'AuthRole')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,27 +22,19 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'item.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'authRole.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="title" title="${message(code: 'item.title.label', default: 'Title')}" />
-                        
-                            <th><g:message code="item.itemType.label" default="Item Type" /></th>
-                   	    
-                            <g:sortableColumn property="releaseYear" title="${message(code: 'item.releaseYear.label', default: 'Release Year')}" />
+                            <g:sortableColumn property="authority" title="${message(code: 'authRole.authority.label', default: 'Authority')}" />
                         
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${itemInstanceList}" status="i" var="itemInstance">
+                    <g:each in="${authRoleInstanceList}" status="i" var="authRoleInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${itemInstance.id}">${fieldValue(bean: itemInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${authRoleInstance.id}">${fieldValue(bean: authRoleInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "title")}</td>
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "itemType")}</td>
-                        
-                            <td><g:formatDate format="yyyy" date="${itemInstance.releaseYear}" /></td>
+                            <td>${fieldValue(bean: authRoleInstance, field: "authority")}</td>
                         
                         </tr>
                     </g:each>
@@ -50,7 +42,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${itemInstanceTotal}" />
+                <g:paginate total="${authRoleInstanceTotal}" />
             </div>
         </div>
     </body>

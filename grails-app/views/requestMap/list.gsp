@@ -1,10 +1,10 @@
 
-<%@ page import="com.isharelib.library.domain.Item" %>
+<%@ page import="com.isharelib.library.domain.RequestMap" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
+        <g:set var="entityName" value="${message(code: 'requestMap.label', default: 'RequestMap')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,27 +22,23 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'item.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'requestMap.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="title" title="${message(code: 'item.title.label', default: 'Title')}" />
+                            <g:sortableColumn property="url" title="${message(code: 'requestMap.url.label', default: 'Url')}" />
                         
-                            <th><g:message code="item.itemType.label" default="Item Type" /></th>
-                   	    
-                            <g:sortableColumn property="releaseYear" title="${message(code: 'item.releaseYear.label', default: 'Release Year')}" />
+                            <g:sortableColumn property="configAttribute" title="${message(code: 'requestMap.configAttribute.label', default: 'Config Attribute')}" />
                         
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${itemInstanceList}" status="i" var="itemInstance">
+                    <g:each in="${requestMapInstanceList}" status="i" var="requestMapInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${itemInstance.id}">${fieldValue(bean: itemInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${requestMapInstance.id}">${fieldValue(bean: requestMapInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "title")}</td>
+                            <td>${fieldValue(bean: requestMapInstance, field: "url")}</td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "itemType")}</td>
-                        
-                            <td><g:formatDate format="yyyy" date="${itemInstance.releaseYear}" /></td>
+                            <td>${fieldValue(bean: requestMapInstance, field: "configAttribute")}</td>
                         
                         </tr>
                     </g:each>
@@ -50,7 +46,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${itemInstanceTotal}" />
+                <g:paginate total="${requestMapInstanceTotal}" />
             </div>
         </div>
     </body>

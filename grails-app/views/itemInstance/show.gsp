@@ -1,10 +1,10 @@
 
-<%@ page import="com.isharelib.library.domain.Item" %>
+<%@ page import="com.isharelib.library.domain.ItemInstance" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
+        <g:set var="entityName" value="${message(code: 'itemInstance.label', default: 'ItemInstance')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,43 +23,23 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="item.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="itemInstance.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: itemInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="item.title.label" default="Title" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: itemInstance, field: "title")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: itemInstanceInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="item.itemType.label" default="Item Type" /></td>
+                            <td valign="top" class="name"><g:message code="itemInstance.item.label" default="Item" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="itemType" action="show" id="${itemInstance?.itemType?.id}">${itemInstance?.itemType?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="item.people.label" default="People" /></td>
-                            
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${itemInstance.people}" var="p">
-                                    <li><g:link controller="person" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
+                            <td valign="top" class="value"><g:link controller="item" action="show" id="${itemInstanceInstance?.item?.id}">${itemInstanceInstance?.item?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="item.releaseYear.label" default="Release Year" /></td>
+                            <td valign="top" class="name"><g:message code="itemInstance.owner.label" default="Owner" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate format="yyyy" date="${itemInstance?.releaseYear}" /></td>
+                            <td valign="top" class="value"><g:link controller="collector" action="show" id="${itemInstanceInstance?.owner?.id}">${itemInstanceInstance?.owner?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -68,7 +48,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${itemInstance?.id}" />
+                    <g:hiddenField name="id" value="${itemInstanceInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

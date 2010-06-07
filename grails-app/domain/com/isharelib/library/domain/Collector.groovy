@@ -24,4 +24,8 @@ class Collector {
 	Set<AuthRole> getAuthorities() {
 		CollectorAuthRole.findAllByCollector(this).collect { it.authRole } as Set
 	}
+
+    String toString() {
+      "$username <$email>"
+    }
 }

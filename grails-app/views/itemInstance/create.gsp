@@ -1,10 +1,10 @@
 
-<%@ page import="com.isharelib.library.domain.Item" %>
+<%@ page import="com.isharelib.library.domain.ItemInstance" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
+        <g:set var="entityName" value="${message(code: 'itemInstance.label', default: 'ItemInstance')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -17,9 +17,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${itemInstance}">
+            <g:hasErrors bean="${itemInstanceInstance}">
             <div class="errors">
-                <g:renderErrors bean="${itemInstance}" as="list" />
+                <g:renderErrors bean="${itemInstanceInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
@@ -29,28 +29,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="title"><g:message code="item.title.label" default="Title" /></label>
+                                    <label for="item"><g:message code="itemInstance.item.label" default="Item" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'title', 'errors')}">
-                                    <g:textField name="title" value="${itemInstance?.title}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="itemType"><g:message code="item.itemType.label" default="Item Type" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'itemType', 'errors')}">
-                                    <g:select name="itemType.id" from="${com.isharelib.library.domain.ItemType.list()}" optionKey="id" value="${itemInstance?.itemType?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: itemInstanceInstance, field: 'item', 'errors')}">
+                                    <g:select name="item.id" from="${com.isharelib.library.domain.Item.list()}" optionKey="id" value="${itemInstanceInstance?.item?.id}"  />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="releaseYear"><g:message code="item.releaseYear.label" default="Release Year" /></label>
+                                    <label for="owner"><g:message code="itemInstance.owner.label" default="Owner" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'releaseYear', 'errors')}">
-                                    <g:datePicker name="releaseYear" precision="year" value="${itemInstance?.releaseYear}"  />
+                                <td valign="top" class="value ${hasErrors(bean: itemInstanceInstance, field: 'owner', 'errors')}">
+                                    <g:select name="owner.id" from="${com.isharelib.library.domain.Collector.list()}" optionKey="id" value="${itemInstanceInstance?.owner?.id}"  />
                                 </td>
                             </tr>
                         
