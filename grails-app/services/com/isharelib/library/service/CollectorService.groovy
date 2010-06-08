@@ -13,6 +13,6 @@ class CollectorService {
     static transactional = true
 
     def addItemToCollection(Collector collector, Item item) {
-         new ItemInstance(owner: collector, item: item).save(flush: true)
+         collector.addToCollection(new ItemInstance(owner: collector, item: item).save(flush: true))
     }
 }

@@ -6,8 +6,7 @@ import com.isharelib.library.domain.ItemInstance
 import grails.test.*
 
 class CollectorServiceTests extends GrailsUnitTestCase {
-    def collectorService  
-
+    
     protected void setUp() {
         super.setUp()
     }
@@ -17,13 +16,15 @@ class CollectorServiceTests extends GrailsUnitTestCase {
     }
 
     void testAddItemToCollection() {
-      def user = new Collector(username: 'tester', password: 'password', enabled: true, email: 'test@test.com')
-      def item = new Item(title: "Test movie")
-      user.save()
-      item.save()
-      collectorService.addItemToCollection(user, item)
-      assertEquals("Should have exactly one item in collection", user.collection.size(), 1)
-      def itemInstance = user.collection().get(0)
-      assertEquals("Title should be Test movie", itemInstance.item.title, "Test movie")
+    	    mockDomain(Collector)
+    	    mockDomain(Item)
+    	    mockDomain(ItemInstance)
+    	    def collectorService = new CollectorService()
+    	    def user = new Collector(username: 'tester', password: 'password', enabled: true, email: 'test@test.com', collection: [])
+    	    def item = new Item(title: "Test movie")
+    	    collectorService.addItemToCollection(user, item)
+    	    def itemInstance = ItemInstance.findById(1)
+    	    assertTrue("User's collection should contain the itemInstance", user.collection.contains(itemInstance))
+    	    
     }
 }
